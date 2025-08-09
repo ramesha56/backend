@@ -42,11 +42,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Backend is running 🚀" });
 });
 
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5050;
-  app.listen(PORT, () => {
-    console.log(`✅ Server running locally at http://localhost:${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, () => {
+  console.log(` Server running on port ${PORT}`);
+});
+
 
 module.exports = app;
