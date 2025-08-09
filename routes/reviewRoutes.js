@@ -1,40 +1,11 @@
+
+
 // // routes/reviewsRouts.js
-// const express = require('express');
-// const router = express.Router();
-
-// let reviews = []; // ✅ Use DB in real app!
-
-// router.post('/', (req, res) => {
-//   const { hijabId, user, rating, review } = req.body;
-// if (!hijabId || !user || !rating || !review) {
-//    return res.status(400).json({ error: 'All fields are required' });
-//   }
-//   reviews.push({ hijabId, user, rating, review });
-//   res.status(201).json({ message: 'Review added' });
-// });
-
-
-// // router.post('/', (req, res) => {
-// //   const { hijabId, user, rating, review } = req.body;
-// //   if (!hijabId || !user || !rating || !review) {
-// //     return res.status(400).json({ error: 'All fields are required' });
-// //   }
-// //   reviews.push({ hijabId, user, rating, review });
-// //   res.status(201).json({ message: 'Review added' });
-// // });
-
-// router.get('/:hijabId', (req, res) => {
-//   const hijabId = req.params.hijabId;
-//   const hijabReviews = reviews.filter((r) => r.hijabId === hijabId);
-//   res.json(hijabReviews);
-// });
-
-// module.exports = router;
 const express = require('express');
 const router = express.Router();
 const Review = require('../models/Review');
 
-// Create review
+
 router.post('/', async (req, res) => {
   const { hijabId, user, rating, review } = req.body;
 
@@ -52,7 +23,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get reviews for a specific hijab
+
 router.get('/:hijabId', async (req, res) => {
   try {
     const hijabReviews = await Review.find({ hijabId: req.params.hijabId });
@@ -62,7 +33,7 @@ router.get('/:hijabId', async (req, res) => {
   }
 });
 
-// Update review
+
 router.put('/:id', async (req, res) => {
   const { rating, review } = req.body;
   try {
@@ -81,7 +52,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete review
+
 router.delete('/:id', async (req, res) => {
   try {
     const deletedReview = await Review.findByIdAndDelete(req.params.id);

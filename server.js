@@ -14,7 +14,8 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://hijab-styles-front.vercel.app"
+  "https://hijab-styles-front.vercel.app",
+   "https://hijab-styles-icdj.vercel.app",
 ];
 
 app.use(
